@@ -1,8 +1,8 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #000000;
+  --background: #f0fdf4;
+  --foreground: #111827;
 }
 
 @theme inline {
@@ -10,13 +10,171 @@
   --color-foreground: var(--foreground);
 }
 
-/* Force everything to black font across the entire site */
-* {
-  color: #000000 !important;
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-plus-jakarta), system-ui, -apple-system, sans-serif;
 }
 
-body {
-  background: #ffffff;
-  color: #000000;
-  font-family: Arial, Helvetica, sans-serif;
+/* Layout */
+.inner-grid {
+  display: grid;
+  grid-template-columns: 1fr 0.95fr;
+  gap: 20px;
+  padding: 42px;
+  min-height: 680px;
+}
+
+.left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-col {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}
+
+/* Hero Title */
+.hero-title {
+  margin: 0;
+  font-size: clamp(58px, 10vw, 126px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #059669;
+  font-family: var(--font-space-grotesk), system-ui, sans-serif;
+  animation: popIn 0.8s ease-out both;
+}
+
+@keyframes popIn {
+  0% { transform: translateY(14px) scale(0.92); opacity: 0; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+/* iPhone Mockup */
+.iphone-frame {
+  width: min(430px, 92%);
+  aspect-ratio: 9 / 18;
+  border-radius: 54px;
+  background: linear-gradient(145deg, #065f46, #059669 55%, #10b981);
+  border: 10px solid #0f172a;
+  box-shadow: 0 28px 70px rgba(5, 80, 40, .25);
+  transform: rotate(-9deg);
+  position: relative;
+  overflow: hidden;
+}
+
+.iphone-notch {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 42%;
+  height: 22px;
+  border-radius: 0 0 18px 18px;
+  background: #0b1222;
+  z-index: 3;
+}
+
+.iphone-screen {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+  background: radial-gradient(circle at 40% 20%, rgba(52, 211, 153, 0.33), transparent 45%);
+}
+
+/* Waitlist Form */
+.waitlist-form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+  max-width: 560px;
+}
+
+.waitlist-form input {
+  flex: 1 1 280px;
+  min-height: 48px;
+  border: 1px solid #a7f3d0;
+  border-radius: 12px;
+  padding: 0 14px;
+  font-size: 15px;
+  background: #fff;
+  color: #111827;
+  outline: none;
+}
+
+.waitlist-form input:focus {
+  border-color: #10b981;
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.16);
+}
+
+.waitlist-form button {
+  min-height: 48px;
+  border: none;
+  border-radius: 12px;
+  padding: 0 18px;
+  font-size: 15px;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  background: linear-gradient(135deg, #059669, #10b981);
+  box-shadow: 0 8px 16px rgba(5, 150, 105, .25);
+}
+
+/* Store Badges */
+.store-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.desktop-only { display: flex; }
+.mobile-only { display: none; justify-content: center; padding: 0 42px 16px; }
+
+/* Responsive */
+@media (max-width: 980px) {
+  .inner-grid {
+    grid-template-columns: 1fr;
+    padding: 22px;
+    min-height: auto;
+    gap: 10px;
+  }
+  .left-col {
+    align-items: center;
+    text-align: center;
+  }
+  .store-badges { justify-content: center; }
+  .waitlist-form { justify-content: center; max-width: 100%; }
+  .waitlist-form input { flex: 1 1 100%; }
+  .hero-title {
+    font-size: clamp(44px, 14vw, 80px);
+    line-height: 0.92;
+  }
+  .right-col { padding: 12px 0 4px; flex-direction: column; gap: 12px; }
+  .iphone-frame {
+    transform: none;
+    width: min(320px, 86vw);
+    border-radius: 34px;
+    border-width: 8px;
+  }
+  .iphone-screen { padding: 26px; }
+  .iphone-notch { top: 8px; height: 16px; width: 40%; }
+  .desktop-only { display: none; }
+  .mobile-only { display: flex; }
+  .footer-text { padding: 0 20px 18px !important; text-align: center; font-size: 12px !important; }
+}
+
+@media (max-width: 560px) {
+  .inner-grid { padding: 16px; }
+  .iphone-frame { width: min(286px, 88vw); }
 }
