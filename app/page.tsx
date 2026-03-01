@@ -28,39 +28,12 @@ export default function ComingSoonPage() {
           {/* Left Column */}
           <div className="left-col">
             <Image
-              src="/topleftgreen.png"
+              src="/wlogofina.png"
               alt="Wareji Logo"
               width={72}
               height={72}
-              style={{ objectFit: "contain", marginBottom: 22 }}
+              style={{ objectFit: "contain", marginBottom: 22, filter: "brightness(0) saturate(100%) invert(36%) sepia(93%) saturate(1352%) hue-rotate(131deg) brightness(97%) contrast(97%)" }}
             />
-
-            <div
-              style={{
-                display: "inline-block",
-                padding: "18px 22px",
-                borderRadius: 22,
-                background: "linear-gradient(135deg, rgba(5,150,105,0.09), rgba(16,185,129,0.12))",
-                border: "1px solid #a7f3d0",
-                boxShadow: "0 18px 35px rgba(5, 150, 105, .16)",
-                marginBottom: 10,
-              }}
-            >
-              <span
-                style={{
-                  display: "inline-block",
-                  background: "linear-gradient(135deg, #059669, #10b981)",
-                  color: "#fff",
-                  fontWeight: 800,
-                  letterSpacing: ".08em",
-                  borderRadius: 999,
-                  padding: "10px 18px",
-                  fontSize: 14,
-                }}
-              >
-                Coming Soon
-              </span>
-            </div>
 
             <h1 className="hero-title">Coming Soon</h1>
 
@@ -110,18 +83,45 @@ export default function ComingSoonPage() {
             <div className="iphone-frame">
               <div className="iphone-notch" />
               <div className="iphone-screen">
-                <Image
-                  src="/topleftgreen.png"
-                  alt="Wareji app icon"
-                  width={180}
-                  height={180}
-                  style={{
-                    objectFit: "contain",
-                    borderRadius: "22%",
-                    border: "1px solid rgba(255,255,255,.24)",
-                    boxShadow: "0 18px 32px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.35)",
-                  }}
-                />
+                {/* Decorative orbs */}
+                <div style={{
+                  position: "absolute", top: -40, right: -30,
+                  width: 140, height: 140, borderRadius: "50%",
+                  background: "rgba(255,255,255,0.06)",
+                }} />
+                <div style={{
+                  position: "absolute", bottom: 120, left: -50,
+                  width: 160, height: 160, borderRadius: "50%",
+                  background: "rgba(255,255,255,0.04)",
+                }} />
+
+                {/* Logo centered */}
+                <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1 }}>
+                  <Image
+                    src="/topleftgreen.png"
+                    alt="Wareji app"
+                    width={200}
+                    height={200}
+                    style={{ objectFit: "contain", filter: "brightness(0) invert(1) drop-shadow(0 8px 24px rgba(0,0,0,.2))" }}
+                  />
+                </div>
+
+                {/* Bottom CTA */}
+                <div style={{ zIndex: 1, width: "100%", display: "flex", flexDirection: "column", alignItems: "center", gap: 10, paddingBottom: 8 }}>
+                  <div style={{
+                    width: "85%", padding: "14px 0", borderRadius: 50,
+                    background: "#fff",
+                    textAlign: "center",
+                    fontWeight: 800, fontSize: 13, letterSpacing: 1,
+                    color: "#059669",
+                    boxShadow: "0 4px 20px rgba(255,255,255,0.25)",
+                  }}>
+                    GET STARTED
+                  </div>
+                  <span style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, fontWeight: 600 }}>
+                    I already have an account
+                  </span>
+                </div>
               </div>
             </div>
           </div>
